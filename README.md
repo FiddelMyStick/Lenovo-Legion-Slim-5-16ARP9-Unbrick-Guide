@@ -3,7 +3,7 @@ This guide details the successful recovery of a [Legion Slim 5 16ARP9] after Len
 
 ## What You'll Need
 *   CH341A Programmer
-*   **1.8V Adapter** (⚠️ CRITICAL: The chip runs on 1.8V, not 3.3V or 5V) (For my chip it was [W25R256JWEIQ TR], Identify and Read yours so you evade any dammages to your chip !)
+*   **1.8V Adapter** (CRITICAL: The chip runs on 1.8V, not 3.3V or 5V) (For my chip it was [W25R256JWEIQ TR], Identify and Read yours so you evade any dammages to your chip !)
 *   WSON-8 Probe Solder-Less (8x6mm)
 *   **Tools for DIY Pressure**: An adjustable wrench, a stack of books, a friend for initial alignment.
 *   Software: `NeoProgrammer`, `HxD`, `H2OEZE` (for diff analysis, and replacing modules [Insyde tools]), `Insyde iFlash Image Extractor`.
@@ -20,7 +20,7 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 2.  Place the head of an **adjustable iron wrench** in way that holds the wson-8 like a hand.
 3.  Have an assistant hold the wrench in perfect alignment.
 4.  **Gently** stack books on the wrench's handle to weigh it down and apply even pressure. (Avoid excessive force).
-5.  *...include your own photos of this setup...*
+5.  *![Project Logo](addef828-f0a5-424a-a67a-09cc2f6b78cf.jfif)*
 
 ### 3. Extracting the Boot-Corrupted Dump
 *   *...describe the initial read and verification with NeoProgrammer...*
