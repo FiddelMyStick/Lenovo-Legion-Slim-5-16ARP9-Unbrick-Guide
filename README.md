@@ -20,11 +20,10 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 2.  Place the head of an **adjustable iron wrench** in way that holds the wson-8 like a hand.
 3.  Have an assistant hold the wrench in perfect alignment.
 4.  **Gently** stack books on the wrench's handle to weigh it down and apply even pressure. (Avoid excessive force).
-5.  *![Project Logo](addef828-f0a5-424a-a67a-09cc2f6b78cf.jfif)*
+5.  *![Project Logo](a58e5707-b605-41a6-b100-ca62a3e5b3c5.jfif)*
 6.  *![Project Logo](122becf8-47f1-40d5-8223-c7987abf5760.jfif)*
-7.  *![Project Logo](14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
-8.  *![Project Logo](b469fb91-5402-4355-b8e4-888764055cfd.jfif)*
-9.  *![Project Logo](a58e5707-b605-41a6-b100-ca62a3e5b3c5.jfif)*
+7.  *![Project Logo](b469fb91-5402-4355-b8e4-888764055cfd.jfif)*
+8.  *![Project Logo](14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
 
 ### 3. Extracting the Boot-Corrupted Dump
 *   *...describe the initial read and verification with NeoProgrammer...*
