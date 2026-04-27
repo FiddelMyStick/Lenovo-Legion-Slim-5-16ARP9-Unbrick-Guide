@@ -26,25 +26,62 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 8.  *![Project Logo](14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
 
 ### 3. Extracting the Boot-Corrupted Dump
-*   *...describe the initial read and verification with NeoProgrammer...*
+*   *Now into the hardest part*
+*   *Use your CH341 aka programmer alongside your 1.8v adapter and the wson-8 probe that you've alinghed earlier and puted it down with neoprogrammer to detect the chip and read it*
+*   *Beware the you will need CH341DLL (driver for your programmer) for the software itself can detect your "CH341"*
+*   *Now once all good try to detect the chip and move the wson-8 probe accordinglly until neoprogrammer detects it, and then HOLD STILL, APPLY WEIGHT TO THE WRENCH to hold the position for you and make ur life ez*
+*   *Once all there, and the chip is detected, read the BIOS more than 2 times at least until you get the same reading for at least 2/3 times to you actually know that u extracted the right BIOS code*
+*   *Then we can move to the next part which is the analysis/Getting the right working BIOS*
 
 ### 4. Analyzing & Isolating the Damage
-Using `H2OEZE` and `HxD`:
+Using `H2OEZE` and `HxD`: (I Will include softwares I used here for you to free to exploit as you want)
 1.  `Insyde iFlash Image Extractor` to split the Lenovo update file.
 2.  `H2OEZE` to compare the dump with a clean BIOS to pinpoint the corrupted area.
+*   *Welcome to the most challenging part, now what you need to do now is to go to the official website of your laptop using S/N or Name (for my case was Legion slim5 16arp9), drivers and BIOS, then install
+*   your desired BIOS Version that was already compatible with the bricked one (Here you can use H2OEZE to inspect the old bios like this)*
+*   *![Project Logo](HOEZ.PNG)*
+*   *Beware that this is only applicable for insyde type of firmwares*
+*   *If you dont know which version, then you MUST INSTALL all available BIOS version that are there and compare them manually with HxD (Diff) after extraction [Step 2]*
+*   *Now after you have the manufacturer's BIOS, now you have to extract it, you can use 7zip to reveal the (fd, ROM, bin) or the BIOS file (actual one) that will be the biggest among the extracted .exe file*
+*   *If that dosent work, use innoextract.exe (Follow instructions here "https://github.com/dscharrer/innoextract") instead to reveal it*
+*   *Once you have the file for my case it was .ROM that was bigger than my actual BIOS so, next I had to extract the BIOS Region from it (my Original BIOS was 32MB) so we need to match it*
+*   *Here for insyde tools, I used "Insyde iFlash Image Extractor", just take the .ROM/ .fd/ .bin and drop it on the extractor.exe for it to give you the BIOS you need as it will create a folder that contains it*
+*   *![Project Logo](extractor.PNG)*
+*   *![Project Logo](extractor_res.PNG)*
 3.  `HxD` for a manual offset inspection.
-*   *...document what was broken...*
+*    *Now the confusing part, which is the diffs and finding your DMI data*
+*    *It's quite overwhelming at first but once you get the hang of it it's just copy paste and you don't need to understand binary to do it lol*
+*    *Here wasmy exemple in each, H2OEZE (If you dont have this or not working for you it's fine, you can use HxD for diffing)*
+*    *To know that we indeed extracted the BIOS region, you will find that both broken and the extracted bin have the same header (BIOS region identifier)*
+*    *And if you do a difference, you may not see a very BIG diffs, since it's the same version as the old bricked, and only toched corrupted parts are the highlighted differences*
+*    *If in your case you don't have a backup for the original then you need to seek someone has the same model as you and give you backup ! as you might need it to compare, otherwise u will just be drowning and praying that some BIOS that you will extract magically works !*
+*    *![Project Logo](Same.PNG)*
+*    *![Project Logo](HODiff.PNG)*
+*    *If you managed to reach here then you are pretty much almost done, the rest is gonna be finding your DMI data*
+*    *So hop on HxD and type your Model name like this*
+*    *![Project Logo](ARP.PNG)*
+*    *And then highlight your whole DMI until the padding where it stops with FFFFFFF copy it and then paste it in the same offset in you extracted BIOS like this: *
+*    *![Project Logo](ARP_Paste.PNG)*
+*    *This is IMPORTANT please always make copies so you dont temper with original backups and extractions and avoid any repeated work and good luck*
+*    *If you are curious to know what on your BIOS and diff more with understandable text, insall and use UEFI_Tool, and see the differences yourself with the features it gives (aka drivers etc...)*
+*    *Once this phase is finished we can then go and try to reflash our DMI fixed Extracted BIOS*
+
 
 ### 5. Flashing the Recovery Image
-*   *...how you used NeoProgrammer to write the fixed file...*
+*   *Now It's just a matter of writing the extracted BIOS (with DMI) into your chip*
+*   *Using the setup from before, go to neoprogrammer and erase the chip (MAKE SURE YOU HAVE ALWAYS THE BACKUP OF YOUR ORIGINAL BIOS), wait and then after 1min write the extracted_bios(that has your DMI) into the chip, and wait for it the process to finish*
+*   *Afterwards make sure that you've written the correct bin file by reading again and checking the CRC (Hash) that indeed we did write the correct file*
+*   *Remove the Flasher (wson-8 probe) and hook back the CMOS and the AC, then turn it on and wait for light to be back again, you might need to give the pc some time bfr it turns on since it has to adapt with the new BIOS and make it compatible again with the HARDWARE*
+*   *Warning you might see an EC differnece in case you flashed a diff BIOS version but that won't hurt, you just need to boot into windows again and then update the bios via the .exe file for the EC to match your BIOS Version, for my case the EC binary comes within one whole file (which is the one I extracted earlier)*
+  
+### From my perspective I tried a version with NO DMI and still worked, so you can skip the DMI part if you feel overwhelmed and start flashing and pray it turns on, otherwise you have to copy ur DMI as for some types of motherboards is a requirement.
 
-## ⚠️ Critical Warnings
+## Critical Warnings
 *   **1.8V Adapter**: Do not skip this.
 *   **Patience**: The probe can take many attempts. The DIY pressure method may need adjustments.
-*   **First Boot**: After flashing, the first boot might take [X minutes]. Don't panic.
+*   **First Boot**: After flashing, the first boot might take [5 minutes]. Don't panic.
 
-## 🙏 Acknowledgements
-*   Special thanks to my family for the extra set of hands.
-*   Shout-out to the open-source community for providing the tools.
+## Acknowledgements
+*   Shout-out to the open-source community for providing the tools, and knowledge that made this possible.
 
 *This guide is provided for informational purposes. Proceed at your own risk.*
