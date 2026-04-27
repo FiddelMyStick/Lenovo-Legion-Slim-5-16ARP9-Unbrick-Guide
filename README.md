@@ -20,10 +20,10 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 2.  Place the head of an **adjustable iron wrench** in way that holds the wson-8 like a hand.
 3.  Have an assistant hold the wrench in perfect alignment.
 4.  **Gently** stack books on the wrench's handle to weigh it down and apply even pressure. (Avoid excessive force).
-5.  *![Project Logo](a58e5707-b605-41a6-b100-ca62a3e5b3c5.jfif)*
-6.  *![Project Logo](122becf8-47f1-40d5-8223-c7987abf5760.jfif)*
-7.  *![Project Logo](b469fb91-5402-4355-b8e4-888764055cfd.jfif)*
-8.  *![Project Logo](14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
+5.  *![Project Logo](/assets/a58e5707-b605-41a6-b100-ca62a3e5b3c5.jfif)*
+6.  *![Project Logo](/assets/122becf8-47f1-40d5-8223-c7987abf5760.jfif)*
+7.  *![Project Logo](/assets/b469fb91-5402-4355-b8e4-888764055cfd.jfif)*
+8.  *![Project Logo](/assets/14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
 
 ### 3. Extracting the Boot-Corrupted Dump
 *   *Now into the hardest part*
@@ -39,15 +39,15 @@ Using `H2OEZE` and `HxD`: (I Will include softwares I used here for you to free 
 2.  `H2OEZE` to compare the dump with a clean BIOS to pinpoint the corrupted area.
 *   *Welcome to the most challenging part, now what you need to do now is to go to the official website of your laptop using S/N or Name (for my case was Legion slim5 16arp9), drivers and BIOS, then install
 *   your desired BIOS Version that was already compatible with the bricked one (Here you can use H2OEZE to inspect the old bios like this)*
-*   *![Project Logo](HOEZ.PNG)*
+*   *![Project Logo](/assets/HOEZ.PNG)*
 *   *Beware that this is only applicable for insyde type of firmwares*
 *   *If you dont know which version, then you MUST INSTALL all available BIOS version that are there and compare them manually with HxD (Diff) after extraction [Step 2]*
 *   *Now after you have the manufacturer's BIOS, now you have to extract it, you can use 7zip to reveal the (fd, ROM, bin) or the BIOS file (actual one) that will be the biggest among the extracted .exe file*
 *   *If that dosent work, use innoextract.exe (Follow instructions here "https://github.com/dscharrer/innoextract") instead to reveal it*
 *   *Once you have the file for my case it was .ROM that was bigger than my actual BIOS so, next I had to extract the BIOS Region from it (my Original BIOS was 32MB) so we need to match it*
 *   *Here for insyde tools, I used "Insyde iFlash Image Extractor", just take the .ROM/ .fd/ .bin and drop it on the extractor.exe for it to give you the BIOS you need as it will create a folder that contains it*
-*   *![Project Logo](extractor.PNG)*
-*   *![Project Logo](extractor_res.PNG)*
+*   *![Project Logo](/assets/extractor.PNG)*
+*   *![Project Logo](/assets/extractor_res.PNG)*
 3.  `HxD` for a manual offset inspection.
 *    *Now the confusing part, which is the diffs and finding your DMI data*
 *    *It's quite overwhelming at first but once you get the hang of it it's just copy paste and you don't need to understand binary to do it lol*
@@ -55,13 +55,13 @@ Using `H2OEZE` and `HxD`: (I Will include softwares I used here for you to free 
 *    *To know that we indeed extracted the BIOS region, you will find that both broken and the extracted bin have the same header (BIOS region identifier)*
 *    *And if you do a difference, you may not see a very BIG diffs, since it's the same version as the old bricked, and only toched corrupted parts are the highlighted differences*
 *    *If in your case you don't have a backup for the original then you need to seek someone has the same model as you and give you backup ! as you might need it to compare, otherwise u will just be drowning and praying that some BIOS that you will extract magically works !*
-*    *![Project Logo](Same.PNG)*
-*    *![Project Logo](HODiff.PNG)*
+*    *![Project Logo](/assets/Same.PNG)*
+*    *![Project Logo](/assets/HODiff.PNG)*
 *    *If you managed to reach here then you are pretty much almost done, the rest is gonna be finding your DMI data*
 *    *So hop on HxD and type your Model name like this*
-*    *![Project Logo](ARP.PNG)*
+*    *![Project Logo](/assets/ARP.PNG)*
 *    *And then highlight your whole DMI until the padding where it stops with FFFFFFF copy it and then paste it in the same offset in you extracted BIOS like this: *
-*    *![Project Logo](ARP_Paste.PNG)*
+*    *![Project Logo](/assets/ARP_Paste.PNG)*
 *    *This is IMPORTANT please always make copies so you dont temper with original backups and extractions and avoid any repeated work and good luck*
 *    *If you are curious to know what on your BIOS and diff more with understandable text, insall and use UEFI_Tool, and see the differences yourself with the features it gives (aka drivers etc...)*
 *    *Once this phase is finished we can then go and try to reflash our DMI fixed Extracted BIOS*
