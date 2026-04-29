@@ -23,7 +23,7 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 5.  *![Project Logo](/assets/a58e5707-b605-41a6-b100-ca62a3e5b3c5.jfif)*
 6.  *![Project Logo](/assets/122becf8-47f1-40d5-8223-c7987abf5760.jfif)*
 7.  *![Project Logo](/assets/b469fb91-5402-4355-b8e4-888764055cfd.jfif)*
-8.  *![Project Logo](/assets/14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
+8.  *![Project Logo](/assets/big_view.jpeg)*
 
 ### 3. Extracting the Boot-Corrupted Dump
 *   *Now into the hardest part*
@@ -75,6 +75,9 @@ Using `H2OEZE` and `HxD`: (I Will include softwares I used here for you to free 
 *   *Warning you might see an EC differnece in case you flashed a diff BIOS version but that won't hurt, you just need to boot into windows again and then update the bios via the .exe file for the EC to match your BIOS Version, for my case the EC binary comes within one whole file (which is the one I extracted earlier)*
   
 ### From my perspective I tried a version with NO DMI and still worked, so you can skip the DMI part if you feel overwhelmed and start flashing and pray it turns on, otherwise you have to copy ur DMI as for some types of motherboards is a requirement.
+
+*And here is the results*
+*![Project Logo](/assets/14728db3-aae2-48e4-b1fa-a73fe435247b.jfif)*
 
 ## Critical Warnings
 *   **1.8V Adapter**: Do not skip this.
