@@ -11,8 +11,8 @@ This guide details the successful recovery of a [Legion Slim 5 16ARP9] after Len
 ## Step-by-Step Flash Process
 
 ### 1. Preparation & Dumping
-*   *Classic open and bust out your laptop and locate the chip, It will be obvious if it says "Winbond", then you've hit the jackpot read the serial and search it *
-*   *Make sure the bios chip is exposed and ready to proceed for the next steps ALSO REMOVE ANY POWER SOURCES YOU HAVE NOTHING SHOULD BE PLUGED TO THE MOTHERBOARD ! [CMOS, BATTERY, AC]*
+*   *Classic open and bust out your laptop and locate the chip, It will be obvious if may says "Winbond", then you've hit the jackpot read the serial and search it *
+*   *Make sure the bios chip is exposed and ready to proceed for the next steps ALSO REMOVE ANY POWER SOURCES, NOTHING SHOULD BE PLUGED TO THE MOTHERBOARD ! [CMOS, BATTERY, AC]*
 
 ### 2. The "Wrench-and-Books" Pressure Technique
 Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WSON-8 pads. Instead:
@@ -27,8 +27,8 @@ Holding the probe steady is the hardest part. The `SOIC8` clips don't fit the WS
 
 ### 3. Extracting the Boot-Corrupted Dump
 *   *Now into the hardest part*
-*   *Use your CH341 aka programmer alongside your 1.8v adapter and the wson-8 probe that you've alinghed earlier and puted it down with neoprogrammer to detect the chip and read it*
-*   *Beware the you will need CH341DLL (driver for your programmer) for the software itself can detect your "CH341"*
+*   *Use your CH341 aka programmer or any other programming tool alongside your 1.8v adapter and the wson-8 probe that you've alinghed earlier and puted it down with neoprogrammer to detect the chip and read it*
+*   *Beware the you will need CH341DLL (driver for your programmer) for the software itself can detect your "CH341" in case you did use it*
 *   *Now once all good try to detect the chip and move the wson-8 probe accordinglly until neoprogrammer detects it, and then HOLD STILL, APPLY WEIGHT TO THE WRENCH to hold the position for you and make ur life ez*
 *   *Once all there, and the chip is detected, read the BIOS more than 2 times at least until you get the same reading for at least 2/3 times to you actually know that u extracted the right BIOS code*
 *   *Then we can move to the next part which is the analysis/Getting the right working BIOS*
@@ -41,7 +41,7 @@ Using `H2OEZE` and `HxD`: (I Will include softwares I used here for you to free 
 *   your desired BIOS Version that was already compatible with the bricked one (Here you can use H2OEZE to inspect the old bios like this)*
 *   *![Project Logo](/assets/HOEZ.PNG)*
 *   *Beware that this is only applicable for insyde type of firmwares*
-*   *If you dont know which version, then you MUST INSTALL all available BIOS version that are there and compare them manually with HxD (Diff) after extraction [Step 2]*
+*   *If you dont know which version, then you MUST INSTALL all available BIOS version that are there and compare them manually with HxD (Diff) after extraction [Step 3 afterwards]*
 *   *Now after you have the manufacturer's BIOS, now you have to extract it, you can use 7zip to reveal the (fd, ROM, bin) or the BIOS file (actual one) that will be the biggest among the extracted .exe file*
 *   *If that dosent work, use innoextract.exe (Follow instructions here "https://github.com/dscharrer/innoextract") instead to reveal it*
 *   *Once you have the file for my case it was .ROM that was bigger than my actual BIOS so, next I had to extract the BIOS Region from it (my Original BIOS was 32MB) so we need to match it*
